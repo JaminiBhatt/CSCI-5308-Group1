@@ -8,6 +8,13 @@ build:
   image: gradle:alpine
   script: ./gradlew assemble
   
+test :
+  stage: test
+  tags :
+    - grad
+  script:
+    - ./gradlew check
+  
 deploy-test:
   stage: deploy
   tags: 
