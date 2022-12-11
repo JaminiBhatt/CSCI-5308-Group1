@@ -1,5 +1,4 @@
-package com.project.Group1.Dao;
-
+package com.project.Group1.Database;
 
 import java.sql.*;
 
