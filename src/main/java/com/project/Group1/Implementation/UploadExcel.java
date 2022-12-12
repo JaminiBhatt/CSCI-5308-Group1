@@ -15,11 +15,8 @@ import java.util.List;
 public class UploadExcel {
 
     private static UploadExcel instance_UploadExcel = null;
-
     private UploadExcel() {
-
     }
-
     public void save(MultipartFile file, Environment env, int projectID, int vendorID, int shippingListID, String UserName) throws SQLException, ClassNotFoundException {
         ICommandFactory factory = new CommandFactory();
         List<ShippingList> spl = null;

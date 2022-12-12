@@ -8,13 +8,11 @@ public class PasswordGenerator {
 
     private PasswordGenerator() {
     }
-
     public String generatePassword() {
         UUID randomUUID = UUID.randomUUID();
         return randomUUID.toString().replaceAll("-", "");
 
     }
-
     public static PasswordGenerator getInstance() {
         if (instance_PasswordGenerator == null) {
             instance_PasswordGenerator = new PasswordGenerator();

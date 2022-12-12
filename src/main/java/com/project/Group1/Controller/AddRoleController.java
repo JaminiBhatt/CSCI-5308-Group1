@@ -33,7 +33,6 @@ public class AddRoleController {
         } else {
             ICommandFactory factory = new CommandFactory();
 
-
             //get the Role ID
             String[] args = new String[1];
             args[0] = user.getRole();
@@ -55,8 +54,5 @@ public class AddRoleController {
             modelAndView.setViewName("AdminScreen");
         }
         return modelAndView;
-
     }
-
-
 }

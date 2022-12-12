@@ -14,9 +14,7 @@ import java.util.Base64;
 public class ValidateUser {
 
     private static ValidateUser instance_ValidateUser = null;
-
     private ValidateUser() {
-
     }
 
     public User authenticateUser(String userPassword, String userName, Environment env) throws SQLException, ClassNotFoundException, UnsupportedEncodingException {
@@ -35,9 +33,7 @@ public class ValidateUser {
         } else {
             userDetails.setIsValidUser(false);
         }
-
         return userDetails;
-
     }
 
     public String decodeData(String dbPassword) throws UnsupportedEncodingException {

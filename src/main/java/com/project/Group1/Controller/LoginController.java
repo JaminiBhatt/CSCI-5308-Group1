@@ -40,7 +40,6 @@ public class LoginController {
         ICommandFactory factory = new CommandFactory();
         ModelAndView modelAndView = new ModelAndView();
 
-
         //authenticate the user
         User userFromDB = ValidateUser.getInstance().authenticateUser(user.getPassword(), user.getUsername(), env);
         httpSession.setAttribute("username", userFromDB.getUsername());

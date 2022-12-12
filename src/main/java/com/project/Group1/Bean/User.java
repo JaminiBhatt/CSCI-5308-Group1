@@ -12,19 +12,12 @@ import lombok.Setter;
 public class User {
 
     private String username;
-
     private Boolean isValidUser;
-
     private String password;
-
     private String RadioButton;
-
     private int roleId;
-
     private String role;
-
     private String email;
-
     private String isActive;
 
 }
