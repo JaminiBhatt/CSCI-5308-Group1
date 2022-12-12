@@ -1,0 +1,36 @@
+p.hello {
+  text-align: center;
+  color: red;
+}
+
+.alertDiv
+{
+align: center;
+}
+
+#parent {
+  display: flex;
+  width: 100%;
+  margin-top: 18%;
+
+}
+
+#OtherDiv
+{
+  float:right;
+  margin-right:58%;
+}
+
+#AdminDiv
+{
+  float:left;
+}
+
+#loginScreen {
+flex: 0 0 53%;
+}
+
+#carousel {
+  width: 40%;
+
+}
