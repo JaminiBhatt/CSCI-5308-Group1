@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1"/>
+    <link th:href="@{/css/shippinglist.css}" rel="stylesheet"/>
+    <title>Spring Boot Application</title>
+    <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossorigin="anonymous"
+    />
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"
+    ></script>
+</head>
+<body>
+
+<div id="nav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">AAPS</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                </li>
+                <li class="nav-item dropdown">
+                    <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            id="shippingListDropdown"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                    >
+                        Shipping List
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Upload Shipping List</a>
+                        <a class="dropdown-item" href="#">Shipping List Dashboard</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            id="ICRDropdown"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                    >
+                        ICR
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Raise Call</a>
+                        <a class="dropdown-item" href="#">Call Assignment</a>
+                        <a class="dropdown-item" href="#">Vendor Dashboard</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            id="IRDropdown"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                    >
+                        IR
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">IR Form</a>
+                        <a class="dropdown-item" href="#">IR Dashboard</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+
+<form id="ir-form" th:action="@{/ir-form}" method="post" th:object="${irDataList}">
+
+    <div class="inputs">
+        <div>
+            <label for="project_id" name="project">Project</label>
+            <select id="project_id" name="project" class="form-select" aria-label="Default select example">
+                <option th:selected="${true}" disabled>Select</option>
+                <option th:each="project: ${projects}" th:selected="${selectedProject == project}"
+                        th:text="${project}"></option>
+            </select>
+        </div>
+
+        <div>
+            <label for="vendor_id" name="vendor">Vendor</label>
+            <select id="vendor_id" name="vendor" class="form-select" aria-label="Default select example">
+                <option selected disabled>Select</option>
+                <option th:each="vendor: ${vendors}" th:text="${vendor}"></option>
+            </select>
+        </div>
+
+        <div>
+            <label for="po_id" name="PO">PO</label>
+            <select id="po_id" name="PO" class="form-select" aria-label="Default select example">
+                <option selected disabled>Select</option>
+                <option th:each="po: ${po_list}" th:text="${po}"></option>
+            </select>
+        </div>
+
+        <button id="get-items" type="button" class="btn btn-primary">Get Items</button>
+
+    </div>
+
+    <table class="table">
+        <thead class=".thead-light">
+        <tr>
+            <th>Item Code</th>
+            <th>Item Description</th>
+            <th>Item Quantity</th>
+            <th>Assigned Quantity</th>
+            <th>Accepted Quantity</th>
+            <th>Rejected Quantity</th>
+            <th>Quantity on Hold</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="irData, itemStat : *{irDataList}">
+            <td><input class="item-code" th:field="*{irDataList[__${itemStat.index}__].itemCode}"
+                       th:readonly="readonly"/>
+            </td>
+            <td><input class="item-desc" th:field="*{irDataList[__${itemStat.index}__].itemDesc}"
+                       th:readonly="readonly"/>
+            </td>
+            <td><input class="item-qty" th:field="*{irDataList[__${itemStat.index}__].itemQty}" th:name="itemQty"
+                       th:readonly="readonly"/>
+            </td>
+            <td><input th:field="*{irDataList[__${itemStat.index}__].assignedQty}"></td>
+            <td><input th:field="*{irDataList[__${itemStat.index}__].acceptedQty}"></td>
+            <td><input th:field="*{irDataList[__${itemStat.index}__].rejectedQty}"></td>
+            <td><input th:field="*{irDataList[__${itemStat.index}__].quantityHold}"></td>
+        </tr>
+
+        </tbody>
+    </table>
+    <label for="remark">Remark</label>
+    <input id="remark" name="remark"/>
+
+    <lable for="proposed_from">Proposed From</lable>
+    <input id="proposed_from" type="date" name="proposedFrom"/>
+
+    <lable for="proposed_to">Proposed to</lable>
+    <input id="proposed_to" type="date" name="proposedTo"/>
+
+    <button id="submit-data" type="button" class="btn btn-primary">Submit</button>
+
+
+</form>
+</body>
+<script>
+    $("#project_id").change(function () {
+        console.log("project");
+        $(this).parents("form").submit();
+    });
+    $("#get-items").click(function () {
+        console.log("submit");
+        const form = document.getElementById("ir-form");
+        form.action = "/ir-data";
+        form.submit();
+    });
+
+    $("#submit-data").click(function () {
+        console.log("submit-data");
+        const form = document.getElementById("ir-form");
+        form.action = "/ir-submit-data";
+        form.submit();
+    });
+
+</script>
+</html>

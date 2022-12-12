@@ -28,6 +28,9 @@ dependencies {
 	implementation group: 'org.apache.tomcat', name: 'tomcat-jasper', version: '9.0.62'
 	// https://mvnrepository.com/artifact/javax.servlet/jstl
 	implementation 'javax.servlet:jstl:1.2'
+	// https://mvnrepository.com/artifact/com.itextpdf/itext7-core
+	implementation 'com.itextpdf:itext7-core:7.0.4'
+
 }
 
 tasks.named('test') {
