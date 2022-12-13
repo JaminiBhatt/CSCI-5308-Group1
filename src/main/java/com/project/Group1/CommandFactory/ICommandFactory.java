@@ -41,4 +41,24 @@ public interface ICommandFactory {
     Command getShippingListID(IDatabase db, String[] args, Environment env);
 
     Command saveUploadExcel(IDatabase db, String[] args, Environment env);
+
+    Command getICRCallAssignmentCommand(IDatabase db, String[] args, Environment env);
+
+    Command getInspectorCommand(IDatabase db, String[] args, Environment env);
+
+    Command getInspectorEmailCommand(IDatabase db, String[] args, Environment env);
+
+    Command getICRVendorDashboardCommand(IDatabase db, String[] args, Environment env);
+
+    Command getUpdateICRStatusCommand(IDatabase db, String[] args, Environment env);
+
+    Command getUpdateICR(IDatabase instance, String[] args2, Environment env);
+
+    Command getUpdateICRItems(IDatabase instance, String[] args3, Environment env);
+
+    Command getIRDataCommand(IDatabase instance, String[] args4, Environment env);
+
+    Command getUpdateIR(IDatabase instance, String[] args2, Environment env);
+
+    Command getUpdateIRItems(IDatabase instance, String[] args3, Environment env);
 }

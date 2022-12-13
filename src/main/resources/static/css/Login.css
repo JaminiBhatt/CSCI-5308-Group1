@@ -34,3 +34,7 @@ flex: 0 0 53%;
   width: 40%;
 
 }
+
+img {
+  background-repeat: no-repeat;
+}

@@ -52,32 +52,32 @@ public class CommandFactory implements ICommandFactory {
 
     @Override
     public Command getICRItemsCommand(IDatabase db, String[] args, Environment env) {
-        return new ICRItemsData(db, args, env);
+        return new ICRCommand(db, args, env);
     }
 
     @Override
     public Command getUserDetailsCommand(IDatabase db, String[] args, Environment env) {
-        return new GetUserDetailsCommand(db, args, env);
+        return new UserDetailsCommand(db, args, env);
     }
 
     @Override
     public Command getRoleIDCommand(IDatabase db, String[] args, Environment env) {
-        return new GetRoleIDCommand(db, args, env);
+        return new RoleIDCommand(db, args, env);
     }
 
     @Override
     public Command getAdminUserCommand(IDatabase db, String[] args, Environment env) {
-        return new GetAdminUserCommand(db, args, env);
+        return new AdminUserCommand(db, args, env);
     }
 
     @Override
     public Command addUserRoleCommand(IDatabase db, String[] args, Environment env) {
-        return new AddUserRoleCommand(db, args, env);
+        return new UserRoleCommand(db, args, env);
     }
 
     @Override
     public Command getUsersBasedOnRoleIDCommand(IDatabase db, String[] args, Environment env) {
-        return new GetUsersBasedOnRoleIDCommand(db, args, env);
+        return new UsersBasedOnRoleIDCommand(db, args, env);
     }
 
     @Override
@@ -92,12 +92,62 @@ public class CommandFactory implements ICommandFactory {
 
     @Override
     public Command getShippingListID(IDatabase db, String[] args, Environment env) {
-        return new GetShippingListIDCommand(db, args, env);
+        return new ShippingListIDCommand(db, args, env);
     }
 
     @Override
     public Command saveUploadExcel(IDatabase db, String[] args, Environment env) {
-        return new SaveUploadExcelCommand(db, args, env);
+        return new UploadExcelCommand(db, args, env);
+    }
+
+    @Override
+    public Command getICRCallAssignmentCommand(IDatabase db, String[] args, Environment env) {
+        return new ICRCallAssignmentCommand(db, args, env);
+    }
+
+    @Override
+    public Command getInspectorCommand(IDatabase db, String[] args, Environment env) {
+        return new InspectorCommand(db, args, env);
+    }
+
+    @Override
+    public Command getInspectorEmailCommand(IDatabase db, String[] args, Environment env) {
+        return new InspectorEmailCommand(db, args, env);
+    }
+
+    @Override
+    public Command getICRVendorDashboardCommand(IDatabase db, String[] args4, Environment env) {
+        return new ICRVendorDashboardCommand(db, args4, env);
+    }
+
+    @Override
+    public Command getUpdateICRStatusCommand(IDatabase db, String[] args, Environment env) {
+        return new UpdateICRStatusCommand(db, args, env);
+    }
+
+    @Override
+    public Command getUpdateICR(IDatabase db, String[] args, Environment env) {
+        return new UpdateICRCommand(db, args, env);
+    }
+
+    @Override
+    public Command getUpdateICRItems(IDatabase db, String[] args, Environment env) {
+        return new UpdateICRItems(db, args, env);
+    }
+
+    @Override
+    public Command getIRDataCommand(IDatabase db, String[] args, Environment env) {
+        return new IRDataCommand(db, args, env);
+    }
+
+    @Override
+    public Command getUpdateIR(IDatabase db, String[] args, Environment env) {
+        return new UpdateIRCommand(db, args, env);
+    }
+
+    @Override
+    public Command getUpdateIRItems(IDatabase db, String[] args, Environment env) {
+        return new UpdateIRItems(db, args, env);
     }
 
 }

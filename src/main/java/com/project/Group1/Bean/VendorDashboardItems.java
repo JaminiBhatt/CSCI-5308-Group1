@@ -1,10 +1,10 @@
-package com.example.Group1.Bean;
+package com.project.Group1.Bean;
 
 public class VendorDashboardItems {
     private String projectName;
     private String vendorName;
     private int PONumber;
-    private int ICRNumber;
+    private String ICRNumber;
     private int statusID;
     private String CreatedOn;
     private String CreatedBy;
@@ -13,7 +13,7 @@ public class VendorDashboardItems {
 
 
     public VendorDashboardItems(String projectName, String vendorName, int PONumber,
-                                int ICRNumber, int statusID, String CreatedOn, String CreatedBy, int ICRID) {
+                                String ICRNumber, int statusID, String CreatedOn, String CreatedBy, int ICRID) {
 
         this.ICRID = ICRID;
         this.projectName = projectName;
@@ -56,11 +56,11 @@ public class VendorDashboardItems {
         this.PONumber = PONumber;
     }
 
-    public int getICRNumber() {
+    public String getICRNumber() {
         return ICRNumber;
     }
 
-    public void setICRNumber(int ICRNumber) {
+    public void setICRNumber(String ICRNumber) {
         this.ICRNumber = ICRNumber;
     }
 

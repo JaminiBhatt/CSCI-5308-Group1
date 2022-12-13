@@ -1,4 +1,6 @@
-package com.example.Group1.Controller;
+package com.project.Group1.Controller;
+
+import com.project.Group1.Bean.Event;
 
 import java.util.*;
 

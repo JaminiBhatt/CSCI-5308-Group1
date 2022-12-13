@@ -40,29 +40,60 @@
 <body>
 <div id="nav">
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">AAPS</a>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
         </li>
         <li class="nav-item dropdown">
           <a
                   class="nav-link dropdown-toggle"
                   href="#"
-                  id="navbarDropdown"
+                  id="shippingListDropdown"
                   role="button"
                   data-toggle="dropdown"
                   aria-haspopup="true"
                   aria-expanded="false"
           >
-            Dropdown
+            Shipping List
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Action</a>
-            <a class="dropdown-item" href="#">Another action</a>
-            <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#">Something else here</a>
+            <a class="dropdown-item" href="/UploadSPL">Upload Shipping List</a>
+            <a class="dropdown-item" href="/shippinglist-dashboard">Shipping List Dashboard</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="ICRDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+          >
+            ICR
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/icr">Raise Call</a>
+            <a class="dropdown-item" href="/VendorDashboard">Vendor Dashboard</a>
+          </div>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="IRDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+          >
+            IR
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/ir-form">IR Form</a>
+            <a class="dropdown-item" href="/ir-dashboard">IR Dashboard</a>
           </div>
         </li>
       </ul>

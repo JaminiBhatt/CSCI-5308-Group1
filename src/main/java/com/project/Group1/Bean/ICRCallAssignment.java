@@ -1,4 +1,4 @@
-package com.example.Group1.Bean;
+package com.project.Group1.Bean;
 
 public class ICRCallAssignment {
     private int ID;

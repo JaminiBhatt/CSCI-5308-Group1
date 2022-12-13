@@ -1,4 +1,4 @@
-package com.example.Group1.Bean;
+package com.project.Group1.Bean;
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import java.util.Properties;

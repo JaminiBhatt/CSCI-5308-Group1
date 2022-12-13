@@ -1,6 +1,8 @@
-package com.example.Group1.Dao;
+package com.project.Group1.Dao;
 
 import com.project.Group1.Bean.VendorDashboardItems;
+import com.project.Group1.CommandFactory.Command;
+import com.project.Group1.Database.IDatabase;
 import org.springframework.core.env.Environment;
 
 import java.sql.Connection;
@@ -36,7 +38,7 @@ public class ICRVendorDashboardCommand extends Command {
                 int ID = rs.getInt("ID");
                 String projectName = rs.getString("projectName");
                 String vendorName = rs.getString("vendorName");
-                int ICRNumber = rs.getInt("ICRNumber");
+                String ICRNumber = rs.getString("ICRNumber");
                 int statusID = rs.getInt("statusID");
                 String CreatedOn = rs.getString("CreatedOn");
                 String CreatedBy = rs.getString("CreatedBy");

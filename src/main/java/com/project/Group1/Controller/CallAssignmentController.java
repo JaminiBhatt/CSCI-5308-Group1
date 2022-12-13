@@ -1,4 +1,11 @@
-package com.example.Group1.Controller;
+package com.project.Group1.Controller;
+import com.project.Group1.Bean.Event;
+import com.project.Group1.CommandFactory.Command;
+import com.project.Group1.CommandFactory.CommandFactory;
+import com.project.Group1.CommandFactory.ICommandFactory;
+import com.project.Group1.Database.Database;
+import com.project.Group1.Database.IDatabase;
+import com.project.Group1.Implementation.UpdateInspector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
@@ -35,7 +42,7 @@ public class CallAssignmentController {
 
     @PostMapping("/Call_Assignment")
     public ModelAndView ICRsubmitted(@RequestParam(required = false) String inspectorName) {
-        ModelAndView model = new ModelAndView("ICRCallAssignment");
+        ModelAndView model = new ModelAndView("VendorDashboard");
         List<String> inspectorList1 = new ArrayList<>();
         inspectorList1.add(inspectorName);
         NotificationServiceSubject notificationServiceSubject = new NotificationServiceSubject();

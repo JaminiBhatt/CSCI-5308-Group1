@@ -1,6 +1,6 @@
-package com.example.Group1.Implementation;
-import com.example.Group1.Bean.Configuration;
-import com.example.Group1.Bean.EmailDetails;
+package com.project.Group1.Implementation;
+import com.project.Group1.Bean.Configuration;
+import com.project.Group1.Bean.EmailDetails;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.Transport;
