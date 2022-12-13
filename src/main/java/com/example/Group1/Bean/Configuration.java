@@ -1,15 +1,11 @@
 package com.example.Group1.Bean;
-
 import javax.mail.PasswordAuthentication;
 import javax.mail.Session;
 import java.util.Properties;
-
 public class Configuration {
-
     final String username = "anu.mounisha@gmail.com";
     final String password = "szhwiqsgpedelciu";
     public Session session;
-
     public Configuration() {
         Properties prop = new Properties();
         prop.put("mail.smtp.host", "smtp.gmail.com");
@@ -24,6 +20,4 @@ public class Configuration {
                     }
                 });
     }
-
-    //public abstract void update(Event eventType, List<String> listener);
 }

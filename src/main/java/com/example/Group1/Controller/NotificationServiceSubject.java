@@ -1,7 +1,5 @@
 package com.example.Group1.Controller;
 
-import com.example.Group1.Bean.Event;
-
 import java.util.*;
 
 public class NotificationServiceSubject {
@@ -19,7 +17,7 @@ public class NotificationServiceSubject {
         }
     }
 
-    public void unsubscribe(Event eventType, IListener listener) {
+    public void unsubscribe(Event eventType, List listener) {
         observers.get(eventType).remove(listener);
     }
 

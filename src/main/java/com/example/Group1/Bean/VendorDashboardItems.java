@@ -10,13 +10,7 @@ public class VendorDashboardItems {
     private String CreatedBy;
     private int ICRID;
 
-    public int getICRID() {
-        return ICRID;
-    }
 
-    public void setICRID(int ICRID) {
-        this.ICRID = ICRID;
-    }
 
     public VendorDashboardItems(String projectName, String vendorName, int PONumber,
                                 int ICRNumber, int statusID, String CreatedOn, String CreatedBy, int ICRID) {
@@ -30,7 +24,13 @@ public class VendorDashboardItems {
         this.CreatedOn = CreatedOn;
         this.CreatedBy = CreatedBy;
     }
+    public int getICRID() {
+        return ICRID;
+    }
 
+    public void setICRID(int ICRID) {
+        this.ICRID = ICRID;
+    }
 
     public String getProjectName() {
         return projectName;

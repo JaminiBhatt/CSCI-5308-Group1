@@ -1,7 +1,6 @@
 package com.example.Group1.Dao;
 
-import com.example.Group1.Bean.VendorDashboardItems;
-
+import com.project.Group1.Bean.VendorDashboardItems;
 import org.springframework.core.env.Environment;
 
 import java.sql.Connection;

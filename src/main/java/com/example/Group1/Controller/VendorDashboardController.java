@@ -1,6 +1,4 @@
 package com.example.Group1.Controller;
-
-import com.example.Group1.Bean.VendorDashboardItems;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
@@ -20,7 +18,7 @@ public class VendorDashboardController {
     @GetMapping("/VendorDashboard")
     public ModelAndView getVendorDashboardDashboard() {
         ModelAndView model = new ModelAndView("VendorDashboard");
-        // getting projects
+
         String[] args = {};
         CommandFactory factory = new CommandFactory();
         Command getProjects = factory.getProjectsCommand(Database.getInstance(), args, env);
@@ -41,13 +39,11 @@ public class VendorDashboardController {
         String selectedProject = project;
         model.addObject("selectedProject", selectedProject);
 
-        // getting projects
         String[] args = {};
         Command getProjects = factory.getProjectsCommand(Database.getInstance(), args, env);
         List<String> projects = (List) getProjects.execute();
         model.addObject("projects", projects);
 
-        // getting data for selected project (id)
         String[] args1 = new String[1];
         args1[0] = selectedProject;
 
@@ -59,7 +55,6 @@ public class VendorDashboardController {
         List<String> vendors = (List) getVendors.execute();
         model.addObject("vendors", vendors);
 
-        // getting po_list
         args1[0] = String.valueOf(projectId);
         Command getVendorID = factory.getVendorIDCommand(Database.getInstance(), args1, env);
         int vendorId = (int) getVendorID.execute();
@@ -79,7 +74,6 @@ public class VendorDashboardController {
         ModelAndView model = new ModelAndView("VendorDashboard");
         CommandFactory factory = new CommandFactory();
 
-        // adding selected projected
         String selectedProject = project;
         model.addObject("selectedProject", selectedProject);
 
@@ -89,7 +83,6 @@ public class VendorDashboardController {
         List<String> projects = (List) getProjects.execute();
         model.addObject("projects", projects);
 
-        // getting data for selected project (id)
         String[] args1 = new String[1];
         args1[0] = selectedProject;
 
@@ -101,7 +94,6 @@ public class VendorDashboardController {
         List<String> vendors = (List) getVendors.execute();
         model.addObject("vendors", vendors);
 
-        // getting po_list
         args1[0] = String.valueOf(projectId);
         Command getVendorID = factory.getVendorIDCommand(Database.getInstance(), args1, env);
         int vendorId = (int) getVendorID.execute();
@@ -113,14 +105,12 @@ public class VendorDashboardController {
         List<String> po_list = (List) getPOList.execute();
         model.addObject("po_list", po_list);
 
-
-        // getting ICR
         String po = String.valueOf(po_list.get(0));
         String[] args4 = new String[3];
         args4[0] = String.valueOf(projectId);
         args4[1] = String.valueOf(vendorId);
         args4[2] = String.valueOf(po);
-        //String[] args4 = {po};
+
         Command getVendorDashboardItems = factory.getICRVendorDashboardCommand(Database.getInstance(), args4, env);
         List<VendorDashboardItems> ICR_items_list = (List) getVendorDashboardItems.execute();
         model.addObject("ICR_items_list", ICR_items_list);

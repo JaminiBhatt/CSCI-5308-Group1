@@ -10,13 +10,6 @@ public class ICRCallAssignment {
 
     private int ICRID;
 
-    public int getID() {
-        return ID;
-    }
-
-    public void setID(int ID) {
-        this.ID = ID;
-    }
 
     public ICRCallAssignment(int ID, int SLID, int itemCode, String itemDesc, int itemQty, int offeredQty, int ICRID) {
         this.ID = ID;
@@ -84,6 +77,14 @@ public class ICRCallAssignment {
 
     public void setItemQty(int itemQty) {
         this.itemQty = itemQty;
+    }
+
+    public int getID() {
+        return ID;
+    }
+
+    public void setID(int ID) {
+        this.ID = ID;
     }
 }
 

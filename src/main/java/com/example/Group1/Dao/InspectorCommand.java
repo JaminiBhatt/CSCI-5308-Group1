@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class InspectorCommand extends Command {
-
     public InspectorCommand(IDatabase receiver, String[] args, Environment env) {
         super(receiver, args, env);
     }
