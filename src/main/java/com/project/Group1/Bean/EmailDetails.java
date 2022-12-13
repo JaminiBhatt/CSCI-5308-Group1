@@ -5,14 +5,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
+// Annotations@Getter
 @Setter
+@Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ShippingListItem {
-    private int PONumber;
-    private int itemCode;
-    private String itemDesc;
-    private int itemQty;
-
+public class EmailDetails {
+    private String recipient;
+    private String msgBody;
+    private String subject;
+    private String attachment;
 }

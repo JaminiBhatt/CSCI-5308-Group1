@@ -28,8 +28,12 @@ dependencies {
 	implementation group: 'org.apache.tomcat', name: 'tomcat-jasper', version: '9.0.62'
 	// https://mvnrepository.com/artifact/javax.servlet/jstl
 	implementation 'javax.servlet:jstl:1.2'
-	// https://mvnrepository.com/artifact/com.itextpdf/itext7-core
+	implementation 'org.apache.poi:poi-ooxml:5.2.2'
 	implementation 'com.itextpdf:itext7-core:7.0.4'
+	implementation 'mysql:mysql-connector-java:8.0.30'
+
+
+
 
 }
 

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1"/>
+    <link th:href="@{/css/shippinglist.css}" rel="stylesheet"/>
+    <title>Spring Boot Application</title>
+    <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
+    <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
+            integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+            crossorigin="anonymous"
+    />
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"
+    ></script>
+    <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"
+    ></script>
+</head>
+<body>
+
+<div id="nav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">AAPS</a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                </li>
+                <li class="nav-item dropdown">
+                    <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            id="shippingListDropdown"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                    >
+                        Shipping List
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="/">Upload Shipping List</a>
+                        <a class="dropdown-item" href="/shippinglist-dashboard">Shipping List Dashboard</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            id="ICRDropdown"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                    >
+                        ICR
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Raise Call</a>
+                        <a class="dropdown-item" href="#">Call Assignment</a>
+                        <a class="dropdown-item" href="#">Vendor Dashboard</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a
+                            class="nav-link dropdown-toggle"
+                            href="#"
+                            id="IRDropdown"
+                            role="button"
+                            data-toggle="dropdown"
+                            aria-haspopup="true"
+                            aria-expanded="false"
+                    >
+                        IR
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">IR Form</a>
+                        <a class="dropdown-item" href="#">IR Dashboard</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+
+<form id="UploadSpl-form" th:action="@{/UploadSPL}" method="post">
+
+    <div class="inputs">
+        <div>
+            <label for="project_id" name="project">Project</label>
+            <select id="project_id" name="project" class="form-select" aria-label="Default select example">
+                <option th:selected="${true}" disabled>Select</option>
+                <option th:each="project: ${projects}" th:selected="${selectedProject == project}"
+                        th:text="${project}"></option>
+            </select>
+        </div>
+
+        <div>
+            <label for="vendor_id" name="vendor">Vendor</label>
+            <select id="vendor_id" name="vendor" class="form-select" aria-label="Default select example">
+                <option selected disabled>Select</option>
+                <option th:each="vendor: ${vendors}" th:text="${vendor}"></option>
+            </select>
+        </div>
+
+        <div>
+            <label for="po_id" name="PO">PO</label>
+            <select id="po_id" name="PO" class="form-select" aria-label="Default select example">
+                <option selected disabled>Select</option>
+                <option th:each="po: ${po_list}" th:text="${po}"></option>
+            </select>
+        </div>
+    </div>
+
+    <div class="files">
+        <div class="DownloadExcel" style="margin-top: 2%; margin-left: 2%;">
+            <form th:action="@{/DownloadExcel}" method="post">
+                Download Template :-
+                <input type="submit" id="download-excel" value="DownloadExcel"/> <br/>
+            </form>
+        </div>
+
+        <div class="uploadFile" style="margin-top: 2%; margin-left: 2%;">
+            <br/> <br/>
+            Please select a file to upload :
+            <input type="file" name="file" value="Browse File"/> <br/>
+            <input type="submit" id="upload-excel" value="upload"/> <br/> <br/>
+            <h4 th:if="${message}!=null" style="color: green" th:text="${message}">${message}</h4> <br/>
+        </div>
+    </div>
+
+</form>
+
+
+</body>
+<script>
+    $("#project_id").change(function () {
+        const form = document.getElementById("UploadSpl-form");
+        form.action = "/UploadSPL";
+        form.submit();
+    });
+    $("#get-data").click(function () {
+        const form = document.getElementById("UploadSpl-form");
+        form.action = "/UploadSpl";
+        form.submit();
+    });
+
+   $("#download-excel").click(function () {
+        const form = document.getElementById("UploadSpl-form");
+        form.action = "/DownloadExcel";
+        form.submit();
+    });
+
+    $("#upload-excel").click(function () {
+        const form = document.getElementById("UploadSpl-form");
+        form.enctype = "multipart/form-data";
+        form.action = "/uploadFile";
+        form.submit();
+    });
+
+
+
+</script>
+</html>
