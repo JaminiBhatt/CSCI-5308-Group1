@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1"/>
+    <link th:href="@{/css/form.css}" rel="stylesheet"/>
+    <title>Spring Boot Application</title>
+    <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
+</head>
+<body>
+<h4>ICR Call Assignment</h4>
+<form action="ICRCallAssignment" th:action="@{/CallAssignment}" method="post">
+    <label for="inspectorList" name="inspectorNameLabel">Inspector</label>
+    <select id="inspectorList" name="inspectorName">
+        <option selected disabled>Select</option>
+        <option th:each="inspectors: ${inspectorList}" th:text="${inspectors}"></option>
+    </select>
+    <table>
+        <thead>
+        <tr>
+            <th>Item Code</th>
+            <th>Item Description</th>
+            <th>Item Quantity</th>
+            <th>Offered Quantity</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="ICRItems : ${itemsList}">
+            <th th:text="${ICRItems.itemCode}"></th>
+            <th th:text="${ICRItems.ItemDesc}"></th>
+            <th th:text="${ICRItems.ItemQty}"></th>
+            <th th:text="${ICRItems.OfferedQty}"></th>
+
+        </tr>
+        </tbody>
+    </table>
+    <button id="submit" type="submit" value="Submit" name="Submit">Submit</button>
+</form>
+<script>
+<!--    $(document).on('click', '.Submit', function() {-->
+<!--  $('input').each(function() {-->
+<!--    var content = $(this).val();-->
+<!--    $(this).html(content);-->
+<!--    $(this).contents().unwrap();-->
+<!--  });-->
+ $("#submit").click(function () {
+        console.log("submit");
+        const form = document.getElementById("ICRCallAssignment");
+        form.action = "/Call-Assignment";
+        form.submit();
+        alert("Submitted");});
+
+</script>
+</body>
+</html>
