@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="ISO-8859-1"/>
+    <link th:href="@{/css/form.css}" rel="stylesheet"/>
+    <title>Spring Boot Application</title>
+    <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
+</head>
+<body>
+<h4>ICR Vendor Dashboard</h4>
+
+<form id="vendor-form" th:action="@{/VendorDashboard}" method="post">
+    <label for="project_id" name="project">Project</label>
+    <select id="project_id" name="project">
+        <option th:selected="${true}" disabled>Select</option>
+        <option th:each="project: ${projects}" th:selected="${selectedProject == project}"
+                th:text="${project}"></option>
+    </select>
+
+    <label for="vendor_id" name="vendor">Vendor</label>
+    <select id="vendor_id" name="vendor">
+        <option selected disabled>Select</option>
+        <option th:each="vendor: ${vendors}" th:text="${vendor}"></option>
+    </select>
+
+    <label for="po_id" name="PO">PO</label>
+    <select id="po_id" name="PO">
+        <option selected disabled>Select</option>
+        <option th:each="po: ${po_list}" th:text="${po}"></option>
+    </select>
+    <button id="get-data" type="button">Get Data</button>
+    <table>
+        <thead>
+        <tr>
+            <th>projectName</th>
+            <th>vendorName</th>
+            <th>PONumber</th>
+            <th>callNumber</th>
+            <th>status</th>
+            <th>createdDate</th>
+            <th>createdBy</th>
+            <th>Assign to Inspector</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!--        <form id="callICR" method="post">-->
+        <tr th:each="item: ${ICR_items_list}">
+            <form action="/">
+                <input name="ICRID" type="hidden" th:value="${item.getICRID()}">
+                <td><span th:text="${item.getProjectName()}"></span>
+                <td><span th:text="${item.getVendorName()}"></span></td>
+                <td><span th:text="${item.getPONumber()}"></span></td>
+                <td><span th:text="${item.getICRNumber()}"></span></td>
+                <td><span th:text="${item.getStatusID()}"></span></td>
+                <td><span th:text="${item.getCreatedOn()}"></span></td>
+                <td><span th:text="${item.getCreatedBy()}"></span></td>
+                <td>
+                    <button id="assign" type="submit">Call Assignment</button>
+                </td>
+            </form>
+
+        </tr>
+
+        </tbody>
+    </table>
+</form>
+</body>
+<script>
+    $("#project_id").change(function () {
+        console.log("project");
+        $(this).parents("form").submit();
+    });
+    $("#get-data").click(function () {
+        console.log("submit");
+        const form = document.getElementById("vendor-form");
+        form.action = "/vendor-data";
+        form.submit();
+    });
+
+ $("#assign").click(function () {
+        alert("submitted");
+        const form = document.getElementById("vendor-form");
+        form.action = "/CallAssignment";
+        form.submit();
+    });
+
+
+</script>
+</html>
