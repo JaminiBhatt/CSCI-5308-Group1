@@ -135,8 +135,6 @@ public class ICRController {
         args4[1] = String.valueOf(vendorId);
         args4[2] = PO;
         Command getICRItems = factory.getICRItemsCommand(Database.getInstance(), args4, env);
-//        List<ICRItems> items_list = (List) getICRItems.execute();
-//        model.addObject("items_list", items_list);
 
         ICRItemsList icrItemsList = (ICRItemsList) getICRItems.execute();
         model.addObject("icrItemsList", icrItemsList);
@@ -146,9 +144,6 @@ public class ICRController {
 
     @PostMapping("/icr-submit-data")
     public ModelAndView submitICRData(@ModelAttribute ICRItemsList icrItemsList, @RequestParam String project, @RequestParam String vendor, @RequestParam String PO, @RequestParam String location, @RequestParam String remark, @RequestParam Date proposedFrom, @RequestParam Date proposedTo) {
-
-
-        System.out.println(remark + " " + proposedFrom + " " + proposedTo);
         ModelAndView model = getICRForm();
 
         // get project id
