@@ -31,7 +31,6 @@ public class UploadExcelController {
             if (httpSession.getAttribute("role") == null) {
                 modelAndView.setViewName("ErrorPageInvalidUrl");
             } else {
-                int recordsInserted = 0;
                 CommandFactory factory = new CommandFactory();
                 if (ExcelToListConverter.getInstance().checkExcelFormat(file)) {
 
