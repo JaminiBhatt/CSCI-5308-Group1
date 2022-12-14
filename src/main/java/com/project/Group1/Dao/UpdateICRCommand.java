@@ -3,7 +3,6 @@ package com.project.Group1.Dao;
 import com.project.Group1.CommandFactory.Command;
 import com.project.Group1.Database.IDatabase;
 import org.springframework.core.env.Environment;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -40,5 +39,4 @@ public class UpdateICRCommand extends Command {
             return -1;
         }
     }
-
 }
