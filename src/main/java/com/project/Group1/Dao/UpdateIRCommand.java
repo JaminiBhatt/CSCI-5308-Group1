@@ -35,10 +35,7 @@ public class UpdateIRCommand extends Command {
             con.close();
             return irID;
         } catch (Exception e) {
-            e.printStackTrace();
             return -1;
         }
     }
-
-
 }

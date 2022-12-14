@@ -142,10 +142,6 @@ public class IRFormController {
         Command getIRData = factory.getIRDataCommand(Database.getInstance(), args4, env);
 
         IRDataList irDataList = (IRDataList) getIRData.execute();
-//        System.out.println(irDataList);
-//        for (IRData irData : irDataList.getIrDataList()) {
-//            System.out.println(irData.toString());
-//        }
         model.addObject("irDataList", irDataList);
         return model;
     }
@@ -153,8 +149,6 @@ public class IRFormController {
     @PostMapping("/ir-submit-data")
     public ModelAndView submitIRData(@ModelAttribute IRDataList irDataList, @RequestParam String project, @RequestParam String vendor, @RequestParam String PO, @RequestParam String remark, @RequestParam Date proposedFrom, @RequestParam Date proposedTo) {
 
-
-        System.out.println(remark + " " + proposedFrom + " " + proposedTo);
         ModelAndView model = getIRForm();
 
         // get project id
@@ -183,8 +177,6 @@ public class IRFormController {
 
         int irID = (int) updateIR.execute();
 
-        System.out.println(irID);
-
         for (IRData irData : irDataList.getIrDataList()) {
             String[] args3 = new String[7];
             args3[0] = String.valueOf(irID);
@@ -197,7 +189,6 @@ public class IRFormController {
             Command getIRItems = factory.getUpdateIRItems(Database.getInstance(), args3, env);
             getIRItems.execute();
         }
-
 
         return model;
     }

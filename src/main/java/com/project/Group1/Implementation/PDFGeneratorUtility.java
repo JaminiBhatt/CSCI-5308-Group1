@@ -50,7 +50,6 @@ public class PDFGeneratorUtility {
             }
 
             document.add(table);
-
             document.close();
             writer.flush();
             writer.close();

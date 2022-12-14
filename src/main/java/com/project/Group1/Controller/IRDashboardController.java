@@ -36,10 +36,8 @@ public class IRDashboardController {
         Command getProjects = factory.getProjectsCommand(Database.getInstance(), args, env);
         List<String> projects = (List) getProjects.execute();
         model.addObject("projects", projects);
-
         IRDataList irDataList = new IRDataList();
         model.addObject("irDataList", irDataList);
-
         return model;
     }
 
@@ -154,15 +152,9 @@ public class IRDashboardController {
             produces = MediaType.APPLICATION_PDF_VALUE
     )
     public void IRReport(HttpServletResponse response, @ModelAttribute IRDataList irDataList) throws IOException {
-
-
         DateFormat dateFormat = new SimpleDateFormat("YYYY-MM-DD:HH:MM:SS");
         String fileType = "attachment; filename=inspection_report_" + dateFormat.format(new Date()) + ".pdf";
         response.setHeader("Content-Disposition", fileType);
-
         PDFGeneratorUtility.IRReport(response, irDataList);
-
-
     }
-
 }

@@ -35,7 +35,6 @@ public class POListCommand extends Command {
             con.close();
             return po_list;
         } catch (Exception e) {
-            e.printStackTrace();
             return null;
         }
     }

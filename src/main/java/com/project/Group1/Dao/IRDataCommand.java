@@ -38,7 +38,6 @@ public class IRDataCommand extends Command {
             con.close();
             return irDataList;
         } catch (Exception e) {
-            e.printStackTrace();
             return null;
         }
     }

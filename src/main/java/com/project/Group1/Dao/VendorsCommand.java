@@ -33,7 +33,6 @@ public class VendorsCommand extends Command {
             con.commit();
             return vendors;
         } catch (Exception e) {
-            e.printStackTrace();
             return null;
         }
     }
