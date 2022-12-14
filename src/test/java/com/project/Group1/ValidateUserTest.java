@@ -30,18 +30,28 @@ public class ValidateUserTest {
         Assertions.assertEquals("V2VsY29tZUAxMjM=", ValidateUser.getInstance().encodePassword("Welcome@123"));
         }
 
+        @Test
+        void testWrongInputEncodePasswordExecute() throws UnsupportedEncodingException, SQLException, ClassNotFoundException
+        {
+        Assertions.assertNotEquals("V2VsY29tZUAxMjM=", ValidateUser.getInstance().encodePassword("Welcome"));
+        }
+
        @Test
        void testDecodePasswordExecute() throws UnsupportedEncodingException, SQLException, ClassNotFoundException
        {
         Assertions.assertEquals("Welcome@123", ValidateUser.getInstance().decodeData("V2VsY29tZUAxMjM="));
        }
 
+        @Test
+        void testDecodeWrongPasswordExecute() throws UnsupportedEncodingException, SQLException, ClassNotFoundException
+        {
+        Assertions.assertNotEquals("Welcome", ValidateUser.getInstance().decodeData("V2VsY29tZUAxMjM="));
+        }
+
       @Test
       void testAunthenticateExecute() throws UnsupportedEncodingException, SQLException, ClassNotFoundException
       {
-          Assertions.assertNotNull(ValidateUser.getInstance().authenticateUser("Welcome", "Akash", env));
+          Assertions.assertNotNull(ValidateUser.getInstance().authenticateUser("Welcome@123", "Akash", env).getRole());
       }
-
-
 
 }
