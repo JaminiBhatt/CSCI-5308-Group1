@@ -61,4 +61,6 @@ public interface ICommandFactory {
     Command getUpdateIR(IDatabase instance, String[] args2, Environment env);
 
     Command getUpdateIRItems(IDatabase instance, String[] args3, Environment env);
+
+    Command getAllIRItems(IDatabase instance, String[] args3, Environment env);
 }

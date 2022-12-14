@@ -140,15 +140,11 @@ public class IRDashboardController {
         Command getICRID = factory.getICRIDCommand(Database.getInstance(), args3, env);
         int icrId = (int) getICRID.execute();
 
-        // getting IR Data Items from ICR items
-        String[] args4 = {String.valueOf(icrId)};
-        Command getIRData = factory.getIRDataCommand(Database.getInstance(), args4, env);
+        // getting IR Data Items from IR
+        String[] args4 = {String.valueOf(projectId), String.valueOf(vendorId), String.valueOf(po_list.get(0))};
+        Command getAllIRItems = factory.getAllIRItems(Database.getInstance(), args4, env);
 
-        IRDataList irDataList = (IRDataList) getIRData.execute();
-//        System.out.println(irDataList);
-//        for (IRData irData : irDataList.getIrDataList()) {
-//            System.out.println(irData.toString());
-//        }
+        IRDataList irDataList = (IRDataList) getAllIRItems.execute();
         model.addObject("irDataList", irDataList);
         return model;
     }

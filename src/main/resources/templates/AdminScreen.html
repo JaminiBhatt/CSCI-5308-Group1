@@ -4,7 +4,8 @@
         <meta charset="ISO-8859-1"/>
         <title>Spring Boot Application</title>
         <script src=https://code.jquery.com/jquery-3.6.0.min.js></script>
-        <link
+
+         <link
                 rel="stylesheet"
                 href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
                 integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -46,6 +47,12 @@ form {
     padding: 3rem;
     box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
+
+#admin-nav {
+    display: flex;
+    justify-content: space-between;
+}
+
 </style>
     <script th:inline="javascript">
 var view = [[${view}]];
@@ -89,6 +96,14 @@ function showViewRole() {
     </script>
 </head>
 <body>
+
+
+<div id="nav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light" id="admin-nav">
+        <a class="navbar-brand" href="#">AAPS</a>
+        <a id="get-data" type="button" class="btn btn-primary" href="/" style="color: white">Logout</a>
+    </nav>
+</div>
 
 <div class="rolesButton" style="margin-top: 7%; margin-left: 36%;">
 <button type="button" style="width: 20%; height: 10%;" th:onclick="showAddRole()">Add Role</button>
