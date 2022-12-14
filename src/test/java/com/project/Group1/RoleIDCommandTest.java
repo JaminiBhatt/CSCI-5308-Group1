@@ -12,6 +12,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 
 @SpringBootTest
@@ -29,6 +30,15 @@ public class RoleIDCommandTest {
         args[0] = "Admin";
         Command getProjects=factory.getRoleIDCommand(Database.getInstance(), args, env);
         assertEquals(4,getProjects.execute());
+    }
+
+    @Test
+    void testExecuteWrongInput() {
+        ICommandFactory factory = new CommandFactory();
+        String[] args = new String[1];
+        args[0] = "Vendor";
+        Command getProjects=factory.getRoleIDCommand(Database.getInstance(), args, env);
+        assertNotEquals(4,getProjects.execute());
     }
 
 }

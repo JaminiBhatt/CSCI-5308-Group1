@@ -13,6 +13,7 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 
 @SpringBootTest
@@ -32,6 +33,18 @@ public class ShippingListIDCommandTest {
         args[2] = String.valueOf(900);
         Command getShippingListID = factory.getShippingListID(Database.getInstance(), args, env);
         assertEquals(1,getShippingListID.execute());
+
+    }
+
+    @Test
+    void testExecuteWrongInput() {
+        ICommandFactory factory = new CommandFactory();
+        String[] args = new String[3];
+        args[0] = String.valueOf(2);
+        args[1] = String.valueOf(4);
+        args[2] = String.valueOf(1100);
+        Command getShippingListID = factory.getShippingListID(Database.getInstance(), args, env);
+        assertNotEquals(1,getShippingListID.execute());
 
     }
 

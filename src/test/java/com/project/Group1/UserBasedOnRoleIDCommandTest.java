@@ -36,6 +36,15 @@ public class UserBasedOnRoleIDCommandTest {
         assertTrue(listUser.size()>0);
     }
 
+    @Test
+    void testExecuteWrongInput() {
+        ICommandFactory factory = new CommandFactory();String[] args1 = new String[1];
+        args1[0] = String.valueOf(1000000000);
+        Command getUsers = factory.getUsersBasedOnRoleIDCommand(Database.getInstance(), args1, env);
+        List<User> listUser = (List<User>) getUsers.execute();
+        assertTrue(listUser.size()==0);
+    }
+
 }
 
 

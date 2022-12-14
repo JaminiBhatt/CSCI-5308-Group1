@@ -31,6 +31,15 @@ public class ProjectIDCommandTest {
         assertTrue((int) getProjectID.execute()>0);
     }
 
+    @Test
+    void testExecuteWrongInput() {
+        ICommandFactory factory = new CommandFactory();
+        String[] args1 = new String[1];
+        args1[0] = "2";
+        Command getProjectID=factory.getProjectIDCommand(Database.getInstance(), args1, env);
+        assertTrue((int) getProjectID.execute()==0);
+    }
+
 }
 
 

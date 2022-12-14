@@ -31,6 +31,15 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
             assertTrue((int) getVendorID.execute()>0);
         }
 
+    @Test
+    void testExecuteWrongInput() {
+        ICommandFactory factory = new CommandFactory();
+        String[] args1 = new String[1];
+        args1[0] = "1";
+        Command getVendorID=factory.getVendorIdCommand(Database.getInstance(), args1, env);
+        assertTrue((int) getVendorID.execute()==0);
+    }
+
     }
 
 

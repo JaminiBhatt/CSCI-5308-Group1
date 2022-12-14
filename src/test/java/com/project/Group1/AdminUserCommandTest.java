@@ -13,6 +13,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
@@ -25,12 +26,24 @@ public class AdminUserCommandTest {
     @Test
     void testExecute() {
         ICommandFactory factory = new CommandFactory();
-        String[] args1 = new String[2];
-        args1[0] = String.valueOf(4);
-        args1[1] = "Rock";
-        Command getUsers=factory.getAdminUserCommand(Database.getInstance(), args1, env);
+        String[] args = new String[2];
+        args[0] = String.valueOf(4);
+        args[1] = "Rock";
+        Command getUsers=factory.getAdminUserCommand(Database.getInstance(), args, env);
         User adminUser = (User) getUsers.execute();
         assertNotNull(adminUser.getUsername());
     }
+
+    @Test
+    void testExecuteWrongInput() {
+        ICommandFactory factory = new CommandFactory();
+        String[] args1 = new String[2];
+        args1[0] = String.valueOf(4);
+        args1[1] = "Akash";
+        Command getUsers=factory.getAdminUserCommand(Database.getInstance(), args1, env);
+        User adminUser = (User) getUsers.execute();
+        assertNull(adminUser.getUsername());
+    }
+
 
 }

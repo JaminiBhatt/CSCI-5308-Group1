@@ -13,6 +13,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 
 @SpringBootTest
@@ -31,6 +32,16 @@ public class UserDetailsCommandTest {
         Command getUserDetails = factory.getUserDetailsCommand(Database.getInstance(), args, env);
         User user= (User) getUserDetails.execute();
         assertNotNull(user.getUsername());
+    }
+
+    @Test
+    void testExecuteWrongInput() {
+        ICommandFactory factory = new CommandFactory();
+        String[] args = new String[1];
+        args[0] = "1";
+        Command getUserDetails = factory.getUserDetailsCommand(Database.getInstance(), args, env);
+        User user= (User) getUserDetails.execute();
+        assertNull(user.getUsername());
     }
 
 }
