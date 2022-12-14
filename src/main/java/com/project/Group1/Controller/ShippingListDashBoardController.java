@@ -116,7 +116,6 @@ public class ShippingListDashBoardController {
         List<String> po_list = (List) getPOList.execute();
         model.addObject("po_list", po_list);
 
-
         // getting shippinglist
         String po = String.valueOf(po_list.get(0));
         String[] args4 = {po};

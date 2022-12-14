@@ -38,7 +38,6 @@ public class ShippingListCommand extends Command {
             return item_list;
 
         } catch (Exception e) {
-            e.printStackTrace();
             return null;
         }
     }

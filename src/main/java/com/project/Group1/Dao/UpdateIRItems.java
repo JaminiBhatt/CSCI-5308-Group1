@@ -33,7 +33,6 @@ public class UpdateIRItems extends Command {
             return result;
 
         } catch (Exception e) {
-            e.printStackTrace();
             return -1;
         }
     }

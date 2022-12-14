@@ -4,9 +4,6 @@ import com.project.Group1.Database.IDatabase;
 import org.springframework.core.env.Environment;
 
 public interface ICommandFactory {
-    Command getUploadSPLCommand(IDatabase db, String[] args, Environment env);
-
-    Command getICRCommand(IDatabase db, String[] args, Environment env);
 
     Command getProjectIDCommand(IDatabase db, String[] args, Environment env);
 
@@ -33,8 +30,6 @@ public interface ICommandFactory {
     Command addUserRoleCommand(IDatabase db, String[] args, Environment env);
 
     Command getUsersBasedOnRoleIDCommand(IDatabase db, String[] args, Environment env);
-
-    Command uploadExcelCommand(IDatabase db, String[] args, Environment env);
 
     Command getVendorIdCommand(IDatabase db, String[] args, Environment env);
 
