@@ -13,8 +13,6 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import java.io.UnsupportedEncodingException;
 import java.sql.SQLException;
 
-import static org.springframework.test.util.AssertionErrors.assertEquals;
-import static org.springframework.test.util.AssertionErrors.assertNotNull;
 
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
