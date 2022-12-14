@@ -13,24 +13,21 @@ import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
+
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
 @TestPropertySource("classpath:application-test.properties")
-public class VendorDashboardController {
+public class CallAssignmentTest {
     @Autowired
     Environment env;
     @Test
-    public void testExecute()
-    {
-        int projectId=1;
-        int vendorId=1;
-        int po=900;
-        String[] args = new String[3];
-        args[0] = String.valueOf(projectId);
-        args[1] = String.valueOf(vendorId);
-        args[2] = String.valueOf(po);
-        ICommandFactory factory=new CommandFactory();
-        Command getVendorDashboardItems = factory.getICRVendorDashboardCommand(Database.getInstance(), args, env);
-        assertNotNull(getVendorDashboardItems.execute());
+    void testExecute() {
+        ICommandFactory factory = new CommandFactory();
+        String[] args=new String[1];
+        args[0]="1";
+        Command getItems= factory.getICRCallAssignmentCommand(Database.getInstance(),args,env);
+        assertNotNull(getItems.execute());
     }
+
 }

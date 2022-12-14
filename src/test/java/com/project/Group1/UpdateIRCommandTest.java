@@ -18,7 +18,7 @@ import java.sql.Date;
 
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
-@TestPropertySource("classpath:application.properties")
+@TestPropertySource("classpath:application-test.properties")
 public class UpdateIRCommandTest {
     @Autowired
     Environment env;
