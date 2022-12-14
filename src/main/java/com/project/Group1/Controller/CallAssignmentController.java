@@ -1,11 +1,12 @@
 package com.project.Group1.Controller;
 import com.project.Group1.Bean.Event;
+import com.project.Group1.Bean.NotificationServiceSubject;
 import com.project.Group1.CommandFactory.Command;
 import com.project.Group1.CommandFactory.CommandFactory;
 import com.project.Group1.CommandFactory.ICommandFactory;
 import com.project.Group1.Database.Database;
 import com.project.Group1.Database.IDatabase;
-import com.project.Group1.Implementation.UpdateInspector;
+import com.project.Group1.Implementation.EmailInspector;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Controller;
@@ -23,12 +24,10 @@ public class CallAssignmentController {
     IDatabase db = Database.getInstance();
 
     @PostMapping("/CallAssignment")
-    public ModelAndView ICRsubmit(@RequestParam(required = false) String ICRID) {
+    public ModelAndView ICRAssign(@RequestParam(required = false) String ICRID) {
         ModelAndView model = new ModelAndView("ICRCallAssignment");
-        System.out.println("id" + ICRID);
         String[] args = new String[1];
         args[0] = ICRID;
-        System.out.println("id" + ICRID);
         CommandFactory factory = new CommandFactory();
         Command getItems = factory.getICRCallAssignmentCommand(db, args, env);
         List<String> itemsList = (List) getItems.execute();
@@ -41,7 +40,7 @@ public class CallAssignmentController {
     }
 
     @PostMapping("/Call_Assignment")
-    public ModelAndView ICRsubmitted(@RequestParam(required = false) String inspectorName) {
+    public ModelAndView ICRSubmit(@RequestParam(required = false) String inspectorName) {
         ModelAndView model = new ModelAndView("VendorDashboard");
         List<String> inspectorList1 = new ArrayList<>();
         inspectorList1.add(inspectorName);
@@ -50,15 +49,14 @@ public class CallAssignmentController {
         ICommandFactory iCommandFactory = new CommandFactory();
         String[] args = new String[1];
         args[0] = inspectorName;
-        System.out.println("inspector" + inspectorName);
         Command getEmail = iCommandFactory.getInspectorEmailCommand(Database.getInstance(), args, env);
         String emailId = (String) getEmail.execute();
         String[] args1 = new String[1];
         args1[0] = emailId;
         Command statusUpdate = iCommandFactory.getUpdateICRStatusCommand(db, args, env);
         statusUpdate.execute();
-        UpdateInspector updateInspector = new UpdateInspector();
-        updateInspector.updateInspector(inspectorName, emailId);
+        EmailInspector emailInspector = new EmailInspector();
+        emailInspector.updateInspector(inspectorName, emailId);
         notificationServiceSubject.unsubscribe(Event.CALL_Assignment, inspectorList1);
         return model;
     }

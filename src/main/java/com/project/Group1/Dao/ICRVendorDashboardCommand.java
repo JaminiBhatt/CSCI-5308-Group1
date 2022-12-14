@@ -44,7 +44,6 @@ public class ICRVendorDashboardCommand extends Command {
                 String CreatedBy = rs.getString("CreatedBy");
                 ICR_items_list.add(new VendorDashboardItems(projectName, vendorName, PONumber,
                         ICRNumber, statusID, CreatedOn, CreatedBy, ID));
-                System.out.println("ICR" + ID);
             }
             con.commit();
             con.close();

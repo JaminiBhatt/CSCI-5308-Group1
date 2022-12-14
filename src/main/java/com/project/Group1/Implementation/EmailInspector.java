@@ -1,5 +1,5 @@
 package com.project.Group1.Implementation;
-import com.project.Group1.Bean.Configuration;
+import com.project.Group1.Bean.EmailConfiguration;
 import com.project.Group1.Bean.EmailDetails;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -8,19 +8,18 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
-public class UpdateInspector {
+public class EmailInspector {
     public void updateInspector(String inspectorName, String emailID) {
-        System.out.println("update inspector");
-        Configuration configuration = new Configuration();
+        EmailConfiguration emailConfiguration = new EmailConfiguration();
         try {
             EmailDetails em = new EmailDetails();
-            Message message = new MimeMessage(configuration.session);
+            Message message = new MimeMessage(emailConfiguration.session);
             message.setFrom(new InternetAddress("anu.mounisha@gmail.com"));
             message.setRecipients(
                     Message.RecipientType.TO,
                     InternetAddress.parse(emailID)
             );
-            message.setSubject("Call Assignment ");
+            message.setSubject("Call Assignment "+inspectorName);
             message.setText(em.CallAssignmentEmailDetails());
             Transport.send(message);
 
