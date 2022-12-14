@@ -5,7 +5,6 @@ import com.project.Group1.Bean.ICRItemsList;
 import com.project.Group1.CommandFactory.Command;
 import com.project.Group1.Database.IDatabase;
 import org.springframework.core.env.Environment;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -24,7 +23,6 @@ public class ICRCommand extends Command {
             ps.setString(1, args[0]);
             ps.setString(2, args[1]);
             ps.setString(3, args[2]);
-
 
             ResultSet rs = ps.executeQuery();
             ICRItemsList list = new ICRItemsList();

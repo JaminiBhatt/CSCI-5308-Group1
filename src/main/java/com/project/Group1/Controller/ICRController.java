@@ -27,7 +27,6 @@ public class ICRController {
     @GetMapping("/icr")
     public ModelAndView getICRForm() {
         ModelAndView model = new ModelAndView("ICR");
-        // getting projects
         String[] args = {};
         CommandFactory factory = new CommandFactory();
         Command getProjects = factory.getProjectsCommand(Database.getInstance(), args, env);
@@ -46,18 +45,12 @@ public class ICRController {
         model.setViewName("ICR");
 
         CommandFactory factory = new CommandFactory();
-
-        // adding selected projected
         String selectedProject = project;
         model.addObject("selectedProject", selectedProject);
-
-        // getting projects
         String[] args = {};
         Command getProjects = factory.getProjectsCommand(Database.getInstance(), args, env);
         List<String> projects = (List) getProjects.execute();
         model.addObject("projects", projects);
-
-        // getting data for selected project (id)
         String[] args1 = new String[1];
         args1[0] = selectedProject;
 
@@ -69,7 +62,6 @@ public class ICRController {
         List<String> vendors = (List) getVendors.execute();
         model.addObject("vendors", vendors);
 
-        // getting po_list
         args1[0] = String.valueOf(projectId);
         Command getVendorID = factory.getVendorIDCommand(Database.getInstance(), args1, env);
         int vendorId = (int) getVendorID.execute();
@@ -92,17 +84,14 @@ public class ICRController {
         ModelAndView model = new ModelAndView("ICR");
         CommandFactory factory = new CommandFactory();
 
-        // adding selected projected
         String selectedProject = project;
         model.addObject("selectedProject", selectedProject);
 
-        // getting projects
         String[] args = {};
         Command getProjects = factory.getProjectsCommand(Database.getInstance(), args, env);
         List<String> projects = (List) getProjects.execute();
         model.addObject("projects", projects);
 
-        // getting data for selected project (id)
         String[] args1 = new String[1];
         args1[0] = selectedProject;
 
@@ -114,7 +103,6 @@ public class ICRController {
         List<String> vendors = (List) getVendors.execute();
         model.addObject("vendors", vendors);
 
-        // getting po_list
         args1[0] = String.valueOf(projectId);
         Command getVendorID = factory.getVendorIDCommand(Database.getInstance(), args1, env);
         int vendorId = (int) getVendorID.execute();
@@ -125,9 +113,6 @@ public class ICRController {
         Command getPOList = factory.getPOListCommand(Database.getInstance(), args2, env);
         List<String> po_list = (List) getPOList.execute();
         model.addObject("po_list", po_list);
-
-
-        // getting icr items
 
         String po = String.valueOf(po_list.get(0));
         String[] args4 = new String[3];
@@ -146,7 +131,6 @@ public class ICRController {
     public ModelAndView submitICRData(@ModelAttribute ICRItemsList icrItemsList, @RequestParam String project, @RequestParam String vendor, @RequestParam String PO, @RequestParam String location, @RequestParam String remark, @RequestParam Date proposedFrom, @RequestParam Date proposedTo) {
         ModelAndView model = getICRForm();
 
-        // get project id
         ICommandFactory factory = new CommandFactory();
 
         String[] args1 = new String[1];
@@ -155,7 +139,6 @@ public class ICRController {
         Command getProjectId = factory.getProjectIDCommand(Database.getInstance(), args1, env);
         int projectId = (int) getProjectId.execute();
 
-        // get vendor id
         args1[0] = String.valueOf(projectId);
         Command getVendorID = factory.getVendorIDCommand(Database.getInstance(), args1, env);
         int vendorId = (int) getVendorID.execute();
@@ -168,7 +151,6 @@ public class ICRController {
         args2[4] = String.valueOf(remark);
         args2[5] = String.valueOf(proposedFrom);
         args2[6] = String.valueOf(proposedTo);
-
 
         Command updateICR = factory.getUpdateICR(Database.getInstance(), args2, env);
         int icrID = (int) updateICR.execute();
@@ -183,8 +165,6 @@ public class ICRController {
             Command getICRItems = factory.getUpdateICRItems(Database.getInstance(), args3, env);
             getICRItems.execute();
         }
-
-
         return model;
     }
 
