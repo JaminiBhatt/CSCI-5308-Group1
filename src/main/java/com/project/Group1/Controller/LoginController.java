@@ -46,7 +46,6 @@ public class LoginController {
         httpSession.setAttribute("password", userFromDB.getPassword());
         httpSession.setAttribute("role", userFromDB.getRole());
 
-
         modelAndView.addObject("isValidUser", userFromDB.getIsValidUser());
         if (userFromDB.getIsValidUser() && user.getRadioButton().equalsIgnoreCase("Others")) {
             String[] args = {};
@@ -54,7 +53,8 @@ public class LoginController {
             List<String> projects = (List) getProjects.execute();
             modelAndView.addObject("projects", projects);
             modelAndView.setViewName("UploadSpl");
-        } else if (userFromDB.getIsValidUser() && user.getRadioButton().equalsIgnoreCase("Admin")) {
+        }
+        else if (userFromDB.getIsValidUser() && user.getRadioButton().equalsIgnoreCase("Admin")) {
             //get the Role ID
             String[] args = new String[1];
             args[0] = "Admin";
@@ -79,7 +79,6 @@ public class LoginController {
 
         } else {
             modelAndView.setViewName("Login");
-
         }
         return modelAndView;
     }
