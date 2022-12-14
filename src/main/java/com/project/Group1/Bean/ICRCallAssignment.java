@@ -7,9 +7,7 @@ public class ICRCallAssignment {
     private String itemDesc;
     private int itemQty;
     private int offeredQty;
-
     private int ICRID;
-
 
     public ICRCallAssignment(int ID, int SLID, int itemCode, String itemDesc, int itemQty, int offeredQty, int ICRID) {
         this.ID = ID;
@@ -20,7 +18,6 @@ public class ICRCallAssignment {
         this.offeredQty = offeredQty;
         this.ICRID = ICRID;
     }
-
     public int getSLID() {
         return SLID;
     }
@@ -28,7 +25,6 @@ public class ICRCallAssignment {
     public void setSLID(int SLID) {
         this.SLID = SLID;
     }
-
 
     public int getICRID() {
         return ICRID;

@@ -26,7 +26,6 @@ public class InspectorCommand extends Command {
             while (rs.next()) {
                 inspectorList.add(rs.getString(1));
             }
-            System.out.println(inspectorList);
             con.commit();
             con.close();
             return inspectorList;

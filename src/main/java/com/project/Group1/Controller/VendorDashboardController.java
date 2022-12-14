@@ -39,7 +39,6 @@ public class VendorDashboardController {
 
         CommandFactory factory = new CommandFactory();
 
-        // adding selected projected
         String selectedProject = project;
         model.addObject("selectedProject", selectedProject);
 
@@ -81,7 +80,6 @@ public class VendorDashboardController {
         String selectedProject = project;
         model.addObject("selectedProject", selectedProject);
 
-        // getting projects
         String[] args = {};
         Command getProjects = factory.getProjectsCommand(Database.getInstance(), args, env);
         List<String> projects = (List) getProjects.execute();

@@ -10,8 +10,6 @@ public class VendorDashboardItems {
     private String CreatedBy;
     private int ICRID;
 
-
-
     public VendorDashboardItems(String projectName, String vendorName, int PONumber,
                                 String ICRNumber, int statusID, String CreatedOn, String CreatedBy, int ICRID) {
 
