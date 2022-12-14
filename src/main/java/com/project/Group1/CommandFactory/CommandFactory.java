@@ -150,14 +150,8 @@ public class CommandFactory implements ICommandFactory {
         return new UpdateIRItems(db, args, env);
     }
 
-<<<<<<< Updated upstream
-}
-=======
     @Override
     public Command getAllIRItems(IDatabase db, String[] args, Environment env) {
         return new ALLIRDataCommand(db, args, env);
     }
-
-
 }
->>>>>>> Stashed changes
