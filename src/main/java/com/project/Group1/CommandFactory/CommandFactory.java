@@ -5,15 +5,6 @@ import com.project.Group1.Database.IDatabase;
 import org.springframework.core.env.Environment;
 
 public class CommandFactory implements ICommandFactory {
-    @Override
-    public Command getUploadSPLCommand(IDatabase db, String[] args, Environment env) {
-        return new UploadSPLCommand(db, args, env);
-    }
-
-    @Override
-    public Command getICRCommand(IDatabase db, String[] args, Environment env) {
-        return new ICRCommand(db, args, env);
-    }
 
     @Override
     public Command getProjectIDCommand(IDatabase db, String[] args, Environment env) {
@@ -78,11 +69,6 @@ public class CommandFactory implements ICommandFactory {
     @Override
     public Command getUsersBasedOnRoleIDCommand(IDatabase db, String[] args, Environment env) {
         return new UsersBasedOnRoleIDCommand(db, args, env);
-    }
-
-    @Override
-    public Command uploadExcelCommand(IDatabase db, String[] args, Environment env) {
-        return new UploadExcelCommand(db, args, env);
     }
 
     @Override

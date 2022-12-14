@@ -33,10 +33,9 @@ public class VendorIDCommand extends Command {
             }
             con.commit();
             con.close();
+            return vendorId;
         } catch (Exception e) {
-            e.printStackTrace();
+            return -1;
         }
-        return vendorId;
     }
-
 }
